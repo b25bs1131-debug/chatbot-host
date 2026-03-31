@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Chatbot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot Widget Integration</title>
+
+  <!-- OPTIONAL: widget style -->
+  <style>
+    #chatbot-container {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 360px;
+      max-width: 90vw;
+      height: 500px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 9999;
+      background: white;
+    }
+  </style>
 </head>
 <body>
+  <h1>My Web Page</h1>
+  <p>Chatbot is loaded as a widget.</p>
 
-  <h1>Welcome to My Chatbot</h1>
-  <p>Chat with our assistant below 👇</p>
+  <div id="chatbot-container">
+    <!-- Optional initial placeholder content -->
+    <p style="padding: 1rem; margin:0;">Loading chatbot…</p>
+  </div>
 
-  <!-- Chatbot container (optional depending on your script) -->
-  <div id="chatbot"></div>
+  <!-- YOUR CHATBOT SCRIPT -->
+  <script>
+    (function () {
+      var widgetRoot = document.getElementById('chatbot-container');
 
-  <!-- 🔹 Replace this with your actual chatbot script -->
-  <script src="YOUR_CHATBOT_SCRIPT_URL.js"></script>
-
+      // Load your Wotnot chatbot script
+      var s = document.createElement('script');
+      s.src = 'https://app.wotnot.io/chat-widget/5yDJfmNR96L7133404266258ScaewqFF.js';
+      s.defer = true; // Use defer instead of async for better loading
+      widgetRoot.innerHTML = ''; // Clear placeholder
+      widgetRoot.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
